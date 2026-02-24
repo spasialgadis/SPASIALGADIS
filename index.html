@@ -2,89 +2,124 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>GADIS - Geodatabase and Information System</title>
 <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800;900&family=Rajdhani:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
-html, body { width:100%; height:100%; overflow:hidden; font-family:'Inter',sans-serif; }
+/* ============================================================
+   RESET & BASE
+============================================================ */
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+html, body {
+  width:100%; height:100%;
+  font-family:'Inter',sans-serif;
+  overflow:hidden;
+}
 
+/* Pages */
 .page { position:absolute; inset:0; }
 .page.hidden { display:none !important; }
 
-/* ========== PAGE 1 ========== */
+/* ============================================================
+   PAGE 1 — WELCOME
+============================================================ */
 #page1 {
   display:flex; flex-direction:column; overflow:hidden;
   background:linear-gradient(145deg,#c8ddf8 0%,#b8ccf0 40%,#a5bce8 100%);
 }
 
-.p1-deco-arrows {
-  position:absolute; top:28px; left:32px; z-index:2;
-  display:flex; flex-direction:column; gap:7px; opacity:0.4;
+/* Decorative arrows */
+.p1-arrows {
+  position:absolute; top:22px; left:22px; z-index:2;
+  display:flex; flex-direction:column; gap:6px; opacity:0.4;
 }
-.p1-deco-arrow {
+.p1-arrow {
   display:block; width:0; height:0;
-  border-top:9px solid transparent; border-bottom:9px solid transparent;
-  border-left:22px solid #3366cc; border-radius:3px;
+  border-top:8px solid transparent; border-bottom:8px solid transparent;
+  border-left:20px solid #3366cc; border-radius:3px;
 }
-.p1-deco-arrow:nth-child(2){margin-left:11px;}
-.p1-deco-arrow:nth-child(3){margin-left:22px;}
+.p1-arrow:nth-child(2){margin-left:10px;}
+.p1-arrow:nth-child(3){margin-left:20px;}
 
-.p1-compass-wrap {
-  position:absolute; top:18px; right:26px; z-index:5;
-  width:78px; height:78px; border-radius:50%; overflow:hidden;
+/* Compass */
+.p1-compass {
+  position:absolute; top:16px; right:20px; z-index:5;
+  width:70px; height:70px; border-radius:50%; overflow:hidden;
   box-shadow:0 4px 22px rgba(0,0,80,.5);
 }
 
+/* Main layout — desktop: side by side */
 .p1-main {
   flex:1; display:flex; align-items:center;
-  justify-content:space-around; padding:60px 80px 20px; z-index:2;
+  justify-content:space-around;
+  padding:70px 60px 16px; z-index:2; gap:20px;
 }
-.p1-illus { width:44%; max-width:520px; animation:float 4s ease-in-out infinite; }
-@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
+.p1-illus {
+  width:42%; max-width:480px; flex-shrink:0;
+  animation:float 4s ease-in-out infinite;
+}
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
 
-.p1-text { width:50%; display:flex; flex-direction:column; align-items:flex-start; gap:14px; }
+.p1-text {
+  flex:1; display:flex; flex-direction:column;
+  align-items:flex-start; gap:10px;
+}
 .p1-welcome {
   font-family:'Exo 2',sans-serif; font-weight:800;
-  font-size:clamp(20px,3vw,42px); color:#1a3fc4;
-  letter-spacing:7px; text-transform:uppercase;
+  font-size:clamp(16px,2.8vw,38px); color:#1a3fc4;
+  letter-spacing:6px; text-transform:uppercase;
 }
 .p1-title {
   font-family:'Exo 2',sans-serif; font-weight:900; font-style:italic;
-  font-size:clamp(62px,11vw,134px); color:#f47c20; line-height:1;
-  text-shadow:5px 5px 0 #c05000, 0 8px 30px rgba(200,80,0,.22);
+  font-size:clamp(54px,10vw,120px); color:#f47c20; line-height:1;
+  text-shadow:4px 4px 0 #c05000, 0 8px 28px rgba(200,80,0,.22);
 }
+
+/* ---- DESKRIPSI SINGKAT ---- */
+.p1-desc {
+  font-family:'Inter',sans-serif; font-size:clamp(12px,1.2vw,15px);
+  color:#1a3fc4; line-height:1.65; max-width:460px;
+  background:rgba(255,255,255,.45); border-radius:12px;
+  padding:12px 16px; border-left:3px solid #1a3fc4;
+  backdrop-filter:blur(4px);
+}
+
 .p1-btn {
-  margin-top:16px; background:#1a3fc4; color:#fff; border:none;
-  border-radius:50px; padding:20px 80px 20px 36px;
-  font-family:'Exo 2',sans-serif; font-size:clamp(16px,2vw,24px);
+  margin-top:8px; background:#1a3fc4; color:#fff; border:none;
+  border-radius:50px; padding:18px 72px 18px 32px;
+  font-family:'Exo 2',sans-serif; font-size:clamp(14px,1.8vw,22px);
   font-weight:800; letter-spacing:3px; cursor:pointer;
-  display:flex; align-items:center; gap:14px;
+  display:flex; align-items:center;
   box-shadow:0 8px 28px rgba(26,63,196,.4);
-  transition:all .25s; position:relative; width:100%; max-width:500px;
+  transition:all .25s; position:relative; width:100%; max-width:460px;
 }
-.p1-btn:hover { background:#2d5be3; transform:translateY(-3px); box-shadow:0 14px 36px rgba(26,63,196,.5); }
+.p1-btn:hover { background:#2d5be3; transform:translateY(-3px); }
+.p1-btn:active { transform:translateY(0); }
 .arrow-circle {
-  position:absolute; right:16px; width:50px; height:50px;
+  position:absolute; right:14px; width:46px; height:46px;
   border-radius:50%; background:#fff;
   display:flex; align-items:center; justify-content:center;
 }
 .arrow-circle::after {
-  content:''; border-top:9px solid transparent;
-  border-bottom:9px solid transparent; border-left:16px solid #1a3fc4;
+  content:''; border-top:8px solid transparent;
+  border-bottom:8px solid transparent; border-left:14px solid #1a3fc4;
 }
 
+/* Footer page1 */
 .p1-footer {
-  background:#1a3fc4; padding:14px 44px;
+  background:#1a3fc4; padding:12px 36px;
   display:flex; align-items:center; justify-content:space-between; z-index:2;
+  flex-wrap:wrap; gap:6px;
 }
-.p1-fy { font-family:'Exo 2',sans-serif; font-size:17px; font-weight:700; color:#fff; letter-spacing:2px; }
-.p1-ft { font-family:'Rajdhani',sans-serif; font-size:15px; font-weight:600; color:rgba(255,255,255,.85); letter-spacing:2.5px; text-transform:uppercase; }
+.p1-fy { font-family:'Exo 2',sans-serif; font-size:15px; font-weight:700; color:#fff; letter-spacing:2px; }
+.p1-ft { font-family:'Rajdhani',sans-serif; font-size:13px; font-weight:600; color:rgba(255,255,255,.85); letter-spacing:2px; text-transform:uppercase; }
 .p1-fb { font-family:'Exo 2',sans-serif; font-weight:800; color:#fff; text-align:right; line-height:1.15; }
-.p1-fb .main { font-size:20px; }
-.p1-fb .sub { font-size:10px; letter-spacing:1px; font-weight:600; opacity:.85; }
+.p1-fb .main { font-size:18px; }
+.p1-fb .sub { font-size:9px; letter-spacing:1px; font-weight:600; opacity:.85; }
 
-/* ========== PAGE 2 ========== */
+/* ============================================================
+   PAGE 2 — DASHBOARD
+============================================================ */
 #page2 {
   display:flex; flex-direction:column; overflow:visible;
   background:
@@ -93,122 +128,125 @@ html, body { width:100%; height:100%; overflow:hidden; font-family:'Inter',sans-
     radial-gradient(ellipse 270px 165px at 54% 67%, rgba(155,188,218,.25) 0%, transparent 70%),
     radial-gradient(ellipse 210px 135px at 86% 60%, rgba(188,168,128,.3) 0%, transparent 70%),
     radial-gradient(ellipse 250px 155px at 32% 80%, rgba(165,208,165,.25) 0%, transparent 70%),
-    linear-gradient(160deg, #c4dcf4 0%, #d4e5ef 28%, #ddd6be 62%, #e6cc9a 100%);
+    linear-gradient(160deg,#c4dcf4 0%,#d4e5ef 28%,#ddd6be 62%,#e6cc9a 100%);
 }
-
 .map-lines-svg {
   position:absolute; inset:0; pointer-events:none; z-index:0;
   width:100%; height:100%;
 }
 
+/* Header */
 .dash-header {
   display:flex; align-items:center; justify-content:space-between;
-  padding:16px 36px 6px; z-index:10; position:relative;
+  padding:14px 30px 4px; z-index:10; position:relative;
 }
 .dash-header-label {
-  font-family:'Rajdhani',sans-serif; font-size:15px; font-weight:700;
-  color:#1a3fc4; letter-spacing:3px; text-transform:uppercase;
+  font-family:'Rajdhani',sans-serif; font-size:clamp(10px,1.4vw,15px);
+  font-weight:700; color:#1a3fc4; letter-spacing:2.5px; text-transform:uppercase;
 }
-.dash-compass-wrap {
-  width:68px; height:68px; border-radius:50%; overflow:hidden;
+.dash-compass {
+  width:60px; height:60px; border-radius:50%; overflow:hidden;
   box-shadow:0 4px 20px rgba(0,0,80,.45); flex-shrink:0;
 }
 
+/* Title */
 .dash-title {
-  text-align:center; padding:4px 20px 10px; z-index:10; position:relative;
-  font-family:'Exo 2',sans-serif; font-size:clamp(24px,4vw,46px);
-  font-weight:900; color:#fff; letter-spacing:5px; text-transform:uppercase;
+  text-align:center; padding:2px 20px 10px; z-index:10; position:relative;
+  font-family:'Exo 2',sans-serif; font-size:clamp(18px,3.5vw,44px);
+  font-weight:900; color:#fff; letter-spacing:4px; text-transform:uppercase;
   text-shadow:0 2px 20px rgba(0,0,80,.22), 2px 2px 0 rgba(0,0,80,.1);
 }
 
 /* Stats */
 .stats-row {
-  display:flex; justify-content:center; gap:20px;
-  padding:0 36px 14px; z-index:10; position:relative;
+  display:flex; justify-content:center; gap:14px;
+  padding:0 24px 12px; z-index:10; position:relative; flex-wrap:wrap;
 }
 .stat-card {
-  background:rgba(255,255,255,.93); border-radius:18px;
-  padding:18px 22px; flex:1; max-width:220px;
-  display:flex; flex-direction:column; align-items:center; gap:7px;
-  box-shadow:0 6px 24px rgba(0,0,60,.13); backdrop-filter:blur(6px);
+  background:rgba(255,255,255,.93); border-radius:16px;
+  padding:14px 18px; flex:1; min-width:110px; max-width:200px;
+  display:flex; flex-direction:column; align-items:center; gap:5px;
+  box-shadow:0 5px 20px rgba(0,0,60,.13); backdrop-filter:blur(6px);
   transition:transform .2s;
 }
-.stat-card:hover { transform:translateY(-5px); }
-.stat-icon { font-size:40px; line-height:1; }
-.stat-number { font-family:'Exo 2',sans-serif; font-size:34px; font-weight:900; color:#f47c20; line-height:1; }
-.stat-label { font-family:'Rajdhani',sans-serif; font-size:13px; font-weight:700; color:#f47c20; letter-spacing:1.5px; text-transform:uppercase; text-align:center; }
+.stat-card:hover { transform:translateY(-4px); }
+.stat-card:active { transform:translateY(0); }
+.stat-icon { font-size:clamp(28px,3.5vw,38px); line-height:1; }
+.stat-number { font-family:'Exo 2',sans-serif; font-size:clamp(24px,3vw,32px); font-weight:900; color:#f47c20; line-height:1; }
+.stat-label { font-family:'Rajdhani',sans-serif; font-size:clamp(10px,1.1vw,13px); font-weight:700; color:#f47c20; letter-spacing:1px; text-transform:uppercase; text-align:center; }
 
 /* Action row */
 .action-row {
-  display:flex; justify-content:center; align-items:flex-start; gap:24px;
-  padding:0 36px 14px; z-index:30; position:relative;
+  display:flex; justify-content:center; align-items:flex-start;
+  gap:16px; padding:0 24px 12px; z-index:30; position:relative;
+  flex-wrap:wrap;
 }
 .panduan-wrapper { position:relative; }
-
 .action-btn {
   background:rgba(255,255,255,.93); border:none; border-radius:50px;
-  padding:15px 32px; font-family:'Exo 2',sans-serif; font-size:17px;
-  font-weight:700; color:#1a3fc4; cursor:pointer;
-  display:flex; align-items:center; gap:12px;
+  padding:13px 26px; font-family:'Exo 2',sans-serif;
+  font-size:clamp(13px,1.5vw,17px); font-weight:700; color:#1a3fc4; cursor:pointer;
+  display:flex; align-items:center; gap:10px;
   box-shadow:0 5px 18px rgba(0,0,60,.13); transition:all .2s;
-  letter-spacing:1.5px; text-transform:uppercase; white-space:nowrap;
+  letter-spacing:1.2px; text-transform:uppercase; white-space:nowrap;
   backdrop-filter:blur(6px);
 }
-.action-btn:hover { background:#fff; transform:translateY(-2px); box-shadow:0 10px 26px rgba(0,0,60,.2); }
+.action-btn:hover { background:#fff; transform:translateY(-2px); }
+.action-btn:active { transform:translateY(0); }
 .chev {
-  width:30px; height:30px; border-radius:50%; background:#e8eeff;
+  width:28px; height:28px; border-radius:50%; background:#e8eeff;
   display:flex; align-items:center; justify-content:center;
-  font-size:15px; transition:transform .3s; flex-shrink:0; line-height:1;
+  font-size:13px; transition:transform .3s; flex-shrink:0;
 }
 .open .chev { transform:rotate(180deg); }
 
-/* Panduan dropdown — anchored to button, above bidang */
+/* Panduan dropdown */
 .panduan-dd {
   display:none; position:absolute;
   top:calc(100% + 10px); left:0;
-  width:320px; background:#fff; border-radius:18px;
+  width:clamp(260px,85vw,320px); background:#fff; border-radius:16px;
   box-shadow:0 16px 50px rgba(0,0,80,.22);
-  z-index:500; padding:14px; flex-direction:column; gap:10px;
+  z-index:500; padding:12px; flex-direction:column; gap:8px;
 }
 .panduan-dd.show { display:flex; }
 .panduan-item {
-  display:flex; align-items:center; gap:14px; padding:16px 18px;
-  border-radius:12px; background:#f0f5ff; text-decoration:none;
-  color:#1a3fc4; font-family:'Exo 2',sans-serif; font-weight:600; font-size:15px;
-  transition:background .2s;
+  display:flex; align-items:center; gap:12px; padding:14px 16px;
+  border-radius:10px; background:#f0f5ff; text-decoration:none;
+  color:#1a3fc4; font-family:'Exo 2',sans-serif; font-weight:600;
+  font-size:clamp(13px,1.4vw,15px); transition:background .2s;
 }
 .panduan-item:hover { background:#ddeeff; }
-.panduan-item .picon { font-size:22px; }
+.picon { font-size:20px; }
 
 /* Bidang row */
 .bidang-row {
-  display:flex; justify-content:center; gap:20px;
-  padding:0 36px 14px; z-index:20; position:relative;
-  overflow:visible;
+  display:flex; justify-content:center; gap:14px;
+  padding:0 24px 12px; z-index:20; position:relative;
+  overflow:visible; flex-wrap:wrap;
 }
 .bidang-wrapper {
-  position:relative; flex:1; max-width:300px;
-  display:flex; flex-direction:column; align-items:center;
-  overflow:visible;
+  position:relative; flex:1; min-width:180px; max-width:290px;
+  display:flex; flex-direction:column; align-items:center; overflow:visible;
 }
 .bidang-btn {
   width:100%; background:rgba(255,255,255,.88); border:none; border-radius:50px;
-  padding:16px 20px; font-family:'Exo 2',sans-serif; font-size:14.5px;
-  font-weight:700; cursor:pointer; display:flex; align-items:center;
-  justify-content:center; gap:10px; box-shadow:0 5px 18px rgba(0,0,60,.12);
-  transition:all .2s; text-align:center; line-height:1.3;
-  letter-spacing:1px; text-transform:uppercase; backdrop-filter:blur(6px);
+  padding:14px 18px; font-family:'Exo 2',sans-serif;
+  font-size:clamp(12px,1.3vw,14.5px); font-weight:700; cursor:pointer;
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  box-shadow:0 5px 18px rgba(0,0,60,.12); transition:all .2s;
+  text-align:center; line-height:1.3; letter-spacing:1px;
+  text-transform:uppercase; backdrop-filter:blur(6px);
 }
 .bidang-btn:hover { transform:translateY(-2px); box-shadow:0 10px 26px rgba(0,0,60,.2); }
+.bidang-btn:active { transform:translateY(0); }
 .bidang-btn.pemerintahan { color:#1a8aff; }
 .bidang-btn.sosial { color:#c07800; }
 .bidang-btn.manusia { color:#d8005e; }
 
-/* Bidang dropdown — fixed to avoid clipping, smooth scroll */
+/* Bidang dropdown — fixed position, smooth scroll */
 .bidang-dd {
-  display:none;
-  position:fixed;
-  width:340px; background:#fff; border-radius:18px;
+  display:none; position:fixed;
+  width:clamp(280px,90vw,340px); background:#fff; border-radius:18px;
   box-shadow:0 16px 50px rgba(0,0,80,.25);
   z-index:9999; padding:12px;
   flex-direction:column; gap:0;
@@ -217,71 +255,152 @@ html, body { width:100%; height:100%; overflow:hidden; font-family:'Inter',sans-
   scrollbar-width:thin; scrollbar-color:#bbb transparent;
 }
 .bidang-dd.show { display:flex; }
-.bidang-dd::-webkit-scrollbar { width:6px; }
-.bidang-dd::-webkit-scrollbar-track { background:transparent; }
+.bidang-dd::-webkit-scrollbar { width:5px; }
 .bidang-dd::-webkit-scrollbar-thumb { background:#bbb; border-radius:10px; }
-.bidang-dd::-webkit-scrollbar-thumb:hover { background:#999; }
 
+/* Peta items */
 .peta-item {
   display:flex; align-items:center; justify-content:space-between;
-  padding:11px 14px; border-radius:12px; background:#f8f9ff;
-  margin-bottom:7px; gap:10px; transition:background .18s;
+  padding:10px 12px; border-radius:12px; background:#f8f9ff;
+  margin-bottom:6px; gap:10px; transition:background .18s;
 }
 .peta-item:last-child { margin-bottom:0; }
-.peta-item:hover { background:#eef3ff; }
+.peta-item:hover, .peta-item:active { background:#eef3ff; }
 .peta-info { flex:1; }
-.peta-name { font-family:'Exo 2',sans-serif; font-weight:700; font-size:13px; line-height:1.25; margin-bottom:3px; }
+.peta-name { font-family:'Exo 2',sans-serif; font-weight:700; font-size:13px; line-height:1.25; margin-bottom:2px; }
 .peta-desc { font-size:11px; color:#888; line-height:1.4; }
 .dd-pem .peta-name { color:#1a8aff; }
 .dd-sos .peta-name { color:#b07000; }
 .dd-man .peta-name { color:#c0005a; }
-
 .peta-action {
   width:44px; height:44px; border-radius:10px; flex-shrink:0;
   display:flex; align-items:center; justify-content:center;
-  cursor:pointer; font-size:24px; transition:transform .18s;
+  cursor:pointer; font-size:22px; transition:transform .18s;
 }
-.peta-action:hover { transform:scale(1.12); }
+.peta-action:hover, .peta-action:active { transform:scale(1.1); }
 .peta-action.map-btn { background:#e8f0ff; }
-.peta-action.lock-btn { background:#fff0f0; font-size:20px; }
+.peta-action.lock-btn { background:#fff0f0; font-size:18px; }
 .peta-action.soon-btn {
   background:#ffe566; font-family:'Exo 2',sans-serif;
-  font-size:11px; font-weight:900; color:#b07800; cursor:default;
+  font-size:10px; font-weight:900; color:#b07800; cursor:default;
 }
 .peta-action.soon-btn:hover { transform:none; }
 
 /* Footer */
 .dash-footer {
-  background:#1a3fc4; padding:12px 44px; margin-top:auto;
+  background:#1a3fc4; padding:10px 36px; margin-top:auto;
   display:flex; align-items:center; justify-content:flex-end;
   z-index:10; position:relative;
 }
 .dash-footer-text { font-family:'Exo 2',sans-serif; font-weight:800; color:#fff; text-align:right; line-height:1.15; }
-.dash-footer-text .main { font-size:20px; }
-.dash-footer-text .sub { font-size:10px; letter-spacing:1px; font-weight:600; opacity:.85; }
+.dash-footer-text .main { font-size:18px; }
+.dash-footer-text .sub { font-size:9px; letter-spacing:1px; font-weight:600; opacity:.85; }
 
-/* Notice */
+/* Notice modal */
 .notice-overlay {
   position:fixed; inset:0; background:rgba(0,0,40,.55);
   z-index:2000; display:none; align-items:center; justify-content:center;
-  backdrop-filter:blur(5px);
+  backdrop-filter:blur(5px); padding:20px;
 }
 .notice-overlay.show { display:flex; }
 .notice-box {
-  background:#fff; border-radius:22px; padding:40px 44px;
-  max-width:420px; text-align:center;
+  background:#fff; border-radius:20px; padding:36px 32px;
+  width:100%; max-width:400px; text-align:center;
   box-shadow:0 24px 70px rgba(0,0,80,.3); animation:popIn .3s ease;
 }
-@keyframes popIn { from{transform:scale(.8);opacity:0} to{transform:scale(1);opacity:1} }
-.notice-icon { font-size:52px; margin-bottom:16px; }
-.notice-title { font-family:'Exo 2',sans-serif; font-size:20px; font-weight:800; color:#cc2200; margin-bottom:10px; }
-.notice-msg { font-size:14px; color:#555; line-height:1.65; margin-bottom:22px; }
+@keyframes popIn { from{transform:scale(.85);opacity:0} to{transform:scale(1);opacity:1} }
+.notice-icon { font-size:48px; margin-bottom:14px; }
+.notice-title { font-family:'Exo 2',sans-serif; font-size:18px; font-weight:800; color:#cc2200; margin-bottom:8px; }
+.notice-msg { font-size:14px; color:#555; line-height:1.6; margin-bottom:20px; }
 .notice-close {
   background:#1a3fc4; color:#fff; border:none; border-radius:50px;
-  padding:12px 34px; font-family:'Exo 2',sans-serif; font-weight:700;
-  cursor:pointer; font-size:15px; transition:background .2s; letter-spacing:1px;
+  padding:12px 32px; font-family:'Exo 2',sans-serif; font-weight:700;
+  cursor:pointer; font-size:14px; transition:background .2s; letter-spacing:1px;
 }
 .notice-close:hover { background:#2d5be3; }
+
+/* ============================================================
+   RESPONSIVE — MOBILE (max 640px)
+============================================================ */
+@media (max-width: 640px) {
+  /* Page 1 */
+  #page1 { overflow-y:auto; height:100%; }
+
+  .p1-arrows { top:14px; left:14px; }
+  .p1-arrow { border-left-width:16px; border-top-width:6px; border-bottom-width:6px; }
+
+  .p1-compass { width:52px; height:52px; top:12px; right:14px; }
+
+  .p1-main {
+    flex-direction:column; align-items:center;
+    padding:80px 24px 16px; gap:12px;
+  }
+  .p1-illus { width:70%; max-width:280px; }
+  .p1-text { width:100%; align-items:center; text-align:center; }
+  .p1-welcome { font-size:clamp(13px,4vw,20px); letter-spacing:4px; }
+  .p1-title { font-size:clamp(56px,18vw,90px); }
+  .p1-desc { font-size:13px; text-align:left; padding:10px 14px; }
+  .p1-btn { font-size:16px; padding:16px 64px 16px 28px; max-width:100%; margin-top:4px; }
+
+  .p1-footer { padding:10px 16px; gap:4px; }
+  .p1-ft { display:none; } /* hide middle text on very small screen */
+  .p1-fb .main { font-size:15px; }
+
+  /* Page 2 */
+  #page2 { overflow-y:auto; height:100%; }
+
+  .dash-header { padding:10px 16px 2px; }
+  .dash-header-label { font-size:10px; letter-spacing:1.5px; }
+  .dash-compass { width:46px; height:46px; }
+
+  .dash-title { font-size:clamp(16px,5.5vw,26px); letter-spacing:2px; padding:2px 12px 8px; }
+
+  .stats-row { gap:8px; padding:0 12px 10px; }
+  .stat-card { padding:10px 10px; min-width:80px; border-radius:12px; }
+  .stat-icon { font-size:26px; }
+  .stat-number { font-size:22px; }
+  .stat-label { font-size:9px; }
+
+  .action-row { gap:10px; padding:0 12px 10px; }
+  .action-btn { padding:11px 18px; font-size:13px; gap:8px; }
+  .chev { width:24px; height:24px; font-size:11px; }
+
+  .panduan-dd { width:calc(100vw - 24px); left:0; }
+
+  .bidang-row { gap:8px; padding:0 12px 10px; }
+  .bidang-wrapper { min-width:calc(50% - 8px); max-width:calc(50% - 4px); }
+  /* Pembangunan Manusia takes full width on mobile */
+  .bidang-wrapper:last-child { min-width:100%; max-width:100%; }
+  .bidang-btn { padding:12px 12px; font-size:11px; border-radius:14px; }
+
+  .bidang-dd { width:calc(100vw - 20px); max-height:50vh; }
+
+  .peta-name { font-size:12px; }
+  .peta-desc { font-size:10px; }
+  .peta-action { width:38px; height:38px; font-size:18px; }
+
+  .dash-footer { padding:9px 16px; }
+  .dash-footer-text .main { font-size:15px; }
+
+  .notice-box { padding:28px 20px; }
+  .notice-icon { font-size:40px; }
+  .notice-title { font-size:16px; }
+  .notice-msg { font-size:13px; }
+}
+
+/* TABLET (641px – 1024px) */
+@media (min-width:641px) and (max-width:1024px) {
+  .p1-main { padding:60px 40px 16px; }
+  .p1-illus { width:38%; }
+  .p1-title { font-size:clamp(56px,9vw,100px); }
+
+  #page2 { overflow-y:auto; }
+  .dash-title { font-size:clamp(20px,3.5vw,34px); }
+  .stats-row { gap:12px; }
+  .stat-card { padding:14px 14px; }
+  .bidang-row { gap:10px; }
+  .bidang-wrapper { min-width:160px; }
+}
 </style>
 </head>
 <body>
@@ -291,7 +410,7 @@ html, body { width:100%; height:100%; overflow:hidden; font-family:'Inter',sans-
 <!-- =========================================================== -->
 <div id="page1" class="page">
 
-  <!-- Map grid background SVG -->
+  <!-- Map grid SVG background -->
   <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;" viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
     <g stroke="#2244aa" stroke-width="0.8" fill="none" opacity="0.12">
       <path d="M0,150 Q350,120 700,158 Q1050,195 1400,148"/>
@@ -299,68 +418,49 @@ html, body { width:100%; height:100%; overflow:hidden; font-family:'Inter',sans-
       <path d="M0,430 Q400,396 700,433 Q1000,468 1400,422"/>
       <path d="M0,570 Q350,535 700,572 Q1050,608 1400,558"/>
       <path d="M0,710 Q300,674 700,712 Q1100,748 1400,694"/>
-      <path d="M0,850 Q400,812 700,852 Q1000,888 1400,832"/>
-      <path d="M140,0 Q162,300 137,900"/>
-      <path d="M290,0 Q315,300 287,900"/>
-      <path d="M440,0 Q467,300 437,900"/>
-      <path d="M590,0 Q618,300 587,900"/>
-      <path d="M740,0 Q768,300 737,900"/>
-      <path d="M890,0 Q917,300 887,900"/>
-      <path d="M1040,0 Q1066,300 1037,900"/>
-      <path d="M1190,0 Q1215,300 1187,900"/>
-      <path d="M1340,0 Q1364,300 1337,900"/>
+      <path d="M140,0 Q162,300 137,900"/><path d="M290,0 Q315,300 287,900"/>
+      <path d="M440,0 Q467,300 437,900"/><path d="M590,0 Q618,300 587,900"/>
+      <path d="M740,0 Q768,300 737,900"/><path d="M890,0 Q917,300 887,900"/>
+      <path d="M1040,0 Q1066,300 1037,900"/><path d="M1190,0 Q1215,300 1187,900"/>
     </g>
-    <!-- subtle land blobs -->
     <g fill="#2244aa" opacity="0.07">
       <ellipse cx="210" cy="340" rx="130" ry="75" transform="rotate(-12,210,340)"/>
       <ellipse cx="1180" cy="210" rx="110" ry="58" transform="rotate(8,1180,210)"/>
       <ellipse cx="920" cy="670" rx="155" ry="68" transform="rotate(-5,920,670)"/>
-      <ellipse cx="600" cy="500" rx="100" ry="55" transform="rotate(3,600,500)"/>
     </g>
   </svg>
 
-  <!-- Decorative arrows top-left -->
-  <div class="p1-deco-arrows">
-    <span class="p1-deco-arrow"></span>
-    <span class="p1-deco-arrow"></span>
-    <span class="p1-deco-arrow"></span>
+  <div class="p1-arrows">
+    <span class="p1-arrow"></span>
+    <span class="p1-arrow"></span>
+    <span class="p1-arrow"></span>
   </div>
 
-  <!-- Compass top-right (pure SVG, no upload needed) -->
-  <div class="p1-compass-wrap">
+  <!-- Compass SVG -->
+  <div class="p1-compass">
     <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <radialGradient id="cBg"><stop offset="0%" stop-color="#0d1d55"/><stop offset="100%" stop-color="#060e28"/></radialGradient>
         <linearGradient id="cOr" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ff8c00"/><stop offset="100%" stop-color="#e03800"/></linearGradient>
         <linearGradient id="cBl" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4488ff"/><stop offset="100%" stop-color="#1a40bb"/></linearGradient>
-        <filter id="glow1"><feGaussianBlur stdDeviation="3.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <filter id="g1"><feGaussianBlur stdDeviation="3.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
       </defs>
       <circle cx="100" cy="100" r="100" fill="url(#cBg)"/>
-      <!-- Outer glow ring -->
-      <circle cx="100" cy="100" r="95" fill="none" stroke="#3366ff" stroke-width="2.5" opacity="0.75" filter="url(#glow1)"/>
-      <!-- Gradient rim (blue to orange, bottom-right) -->
+      <circle cx="100" cy="100" r="95" fill="none" stroke="#3366ff" stroke-width="2.5" opacity="0.75" filter="url(#g1)"/>
       <circle cx="100" cy="100" r="92" fill="none" stroke="url(#cOr)" stroke-width="1.2" stroke-dasharray="290 300" stroke-dashoffset="-145" opacity="0.6"/>
       <circle cx="100" cy="100" r="88" fill="none" stroke="#1e3a88" stroke-width="0.8"/>
-      <!-- Tick marks -->
       <g stroke="#4466bb" stroke-width="1.3" opacity="0.55">
         <line x1="100" y1="9" x2="100" y2="18"/><line x1="100" y1="182" x2="100" y2="191"/>
         <line x1="9" y1="100" x2="18" y2="100"/><line x1="182" y1="100" x2="191" y2="100"/>
       </g>
-      <!-- 8-point compass star -->
-      <!-- N — orange needle -->
-      <polygon points="100,13 92,100 108,100" fill="url(#cOr)" filter="url(#glow1)" opacity="0.96"/>
-      <!-- S — blue needle -->
+      <polygon points="100,13 92,100 108,100" fill="url(#cOr)" filter="url(#g1)" opacity="0.96"/>
       <polygon points="100,187 92,100 108,100" fill="url(#cBl)" opacity="0.82"/>
-      <!-- E -->
       <polygon points="187,100 100,92 100,108" fill="#1c3890" opacity="0.78"/>
-      <!-- W -->
       <polygon points="13,100 100,92 100,108" fill="#1c3890" opacity="0.78"/>
-      <!-- Diagonals -->
       <polygon points="159,41 98,103 102,97" fill="#162e80" opacity="0.52"/>
       <polygon points="41,41 102,103 98,97" fill="#162e80" opacity="0.52"/>
       <polygon points="159,159 98,97 102,103" fill="#162e80" opacity="0.52"/>
       <polygon points="41,159 102,97 98,103" fill="#162e80" opacity="0.52"/>
-      <!-- Center -->
       <circle cx="100" cy="100" r="17" fill="#080f30" stroke="#3366ff" stroke-width="2.2"/>
       <circle cx="100" cy="100" r="11" fill="none" stroke="#f47c20" stroke-width="1.8"/>
       <circle cx="100" cy="100" r="5" fill="#ff6600"/>
@@ -368,9 +468,9 @@ html, body { width:100%; height:100%; overflow:hidden; font-family:'Inter',sans-
     </svg>
   </div>
 
-  <!-- Main content -->
+  <!-- Main -->
   <div class="p1-main">
-    <!-- Computer illustration -->
+    <!-- Illustration -->
     <div class="p1-illus">
       <svg viewBox="0 0 500 390" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="220" y="300" width="60" height="24" rx="5" fill="#3355bb" opacity="0.6"/>
@@ -378,12 +478,9 @@ html, body { width:100%; height:100%; overflow:hidden; font-family:'Inter',sans-
         <rect x="30" y="30" width="440" height="278" rx="22" fill="#182d88"/>
         <rect x="42" y="42" width="416" height="254" rx="14" fill="#0a1540"/>
         <rect x="54" y="54" width="392" height="230" rx="10" fill="#0d1f70"/>
-        <!-- Back window -->
         <rect x="70" y="68" width="220" height="156" rx="7" fill="#1e3a9e" stroke="#3355cc" stroke-width="1"/>
         <rect x="70" y="68" width="220" height="22" rx="7" fill="#2b4dbc"/>
-        <circle cx="83" cy="79" r="5" fill="#ff6b6b"/>
-        <circle cx="97" cy="79" r="5" fill="#ffd93d"/>
-        <circle cx="111" cy="79" r="5" fill="#6bcb77"/>
+        <circle cx="83" cy="79" r="5" fill="#ff6b6b"/><circle cx="97" cy="79" r="5" fill="#ffd93d"/><circle cx="111" cy="79" r="5" fill="#6bcb77"/>
         <g fill="#3355dd" opacity="0.85">
           <rect x="82" y="102" width="58" height="48" rx="6"/><rect x="150" y="102" width="58" height="48" rx="6"/><rect x="218" y="102" width="58" height="48" rx="6"/>
           <rect x="82" y="160" width="58" height="48" rx="6"/><rect x="150" y="160" width="58" height="48" rx="6"/><rect x="218" y="160" width="58" height="48" rx="6"/>
@@ -392,12 +489,9 @@ html, body { width:100%; height:100%; overflow:hidden; font-family:'Inter',sans-
           <polygon points="111,124 122,102 133,124"/><polygon points="179,124 190,102 201,124"/><polygon points="247,124 258,102 269,124"/>
           <polygon points="111,182 122,160 133,182"/><polygon points="179,182 190,160 201,182"/><polygon points="247,182 258,160 269,182"/>
         </g>
-        <!-- Front window -->
         <rect x="175" y="104" width="235" height="168" rx="7" fill="#1a3fc4" stroke="#5577ee" stroke-width="2"/>
         <rect x="175" y="104" width="235" height="22" rx="7" fill="#2b4dbc"/>
-        <circle cx="188" cy="115" r="5" fill="#ff6b6b"/>
-        <circle cx="202" cy="115" r="5" fill="#ffd93d"/>
-        <circle cx="216" cy="115" r="5" fill="#6bcb77"/>
+        <circle cx="188" cy="115" r="5" fill="#ff6b6b"/><circle cx="202" cy="115" r="5" fill="#ffd93d"/><circle cx="216" cy="115" r="5" fill="#6bcb77"/>
         <g fill="#4d6fe8" opacity="0.92">
           <rect x="190" y="138" width="54" height="48" rx="7"/><rect x="256" y="138" width="54" height="48" rx="7"/><rect x="322" y="138" width="54" height="48" rx="7"/>
           <rect x="190" y="198" width="54" height="48" rx="7"/><rect x="256" y="198" width="54" height="48" rx="7"/><rect x="322" y="198" width="54" height="48" rx="7"/>
@@ -406,15 +500,22 @@ html, body { width:100%; height:100%; overflow:hidden; font-family:'Inter',sans-
           <polygon points="217,160 228,138 239,160"/><polygon points="283,160 294,138 305,160"/><polygon points="349,160 360,138 371,160"/>
           <polygon points="217,220 228,198 239,220"/><polygon points="283,220 294,198 305,220"/><polygon points="349,220 360,198 371,220"/>
         </g>
-        <!-- Cable -->
         <path d="M250,300 Q255,340 218,358 Q196,370 180,382" stroke="#1e3a88" stroke-width="7" stroke-linecap="round" fill="none"/>
       </svg>
     </div>
 
-    <!-- Text side -->
+    <!-- Text -->
     <div class="p1-text">
       <div class="p1-welcome">WELCOME TO</div>
       <div class="p1-title">GADIS</div>
+
+      <!-- ★ DESKRIPSI SINGKAT — ubah teks di sini sesuai kebutuhan ★ -->
+      <div class="p1-desc">
+        Platform Geodatabase and Information System milik BAPPERIDA Kabupaten OKU Timur.
+        Menyediakan peta interaktif, data spasial, dan informasi wilayah yang terintegrasi
+        untuk mendukung perencanaan pembangunan daerah tahun 2026.
+      </div>
+
       <button class="p1-btn" onclick="goToDashboard()">
         OPEN ME!
         <span class="arrow-circle"></span>
@@ -438,7 +539,6 @@ html, body { width:100%; height:100%; overflow:hidden; font-family:'Inter',sans-
 <!-- =========================================================== -->
 <div id="page2" class="page hidden">
 
-  <!-- Map lines SVG -->
   <svg class="map-lines-svg" viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
     <g stroke="#336699" stroke-width="0.9" fill="none" opacity="0.2">
       <path d="M0,130 Q350,100 700,138 Q1050,174 1400,126"/>
@@ -446,43 +546,40 @@ html, body { width:100%; height:100%; overflow:hidden; font-family:'Inter',sans-
       <path d="M0,400 Q400,365 700,402 Q1000,437 1400,386"/>
       <path d="M0,535 Q350,498 700,537 Q1050,574 1400,519"/>
       <path d="M0,670 Q300,632 700,672 Q1100,710 1400,650"/>
-      <path d="M0,805 Q400,765 700,807 Q1000,843 1400,783"/>
       <path d="M130,0 Q154,300 128,900"/><path d="M270,0 Q296,300 268,900"/>
       <path d="M410,0 Q438,300 408,900"/><path d="M550,0 Q580,300 548,900"/>
       <path d="M690,0 Q720,300 688,900"/><path d="M830,0 Q858,300 828,900"/>
       <path d="M970,0 Q998,300 968,900"/><path d="M1110,0 Q1137,300 1108,900"/>
       <path d="M1250,0 Q1276,300 1248,900"/>
     </g>
-    <!-- Land blobs for map feel -->
     <g fill="#3a6688" opacity="0.09">
       <ellipse cx="170" cy="295" rx="170" ry="105" transform="rotate(-12,170,295)"/>
       <ellipse cx="830" cy="195" rx="210" ry="95" transform="rotate(6,830,195)"/>
       <ellipse cx="1120" cy="530" rx="175" ry="85" transform="rotate(-8,1120,530)"/>
       <ellipse cx="390" cy="665" rx="185" ry="95" transform="rotate(4,390,665)"/>
-      <ellipse cx="640" cy="410" rx="140" ry="75" transform="rotate(-4,640,410)"/>
     </g>
   </svg>
 
   <!-- Header -->
   <div class="dash-header">
     <span class="dash-header-label">GEODATABASE AND INFORMATION SYSTEM</span>
-    <div class="dash-compass-wrap">
+    <div class="dash-compass">
       <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <radialGradient id="c2Bg"><stop offset="0%" stop-color="#0d1d55"/><stop offset="100%" stop-color="#060e28"/></radialGradient>
           <linearGradient id="c2Or" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ff8c00"/><stop offset="100%" stop-color="#e03800"/></linearGradient>
           <linearGradient id="c2Bl" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4488ff"/><stop offset="100%" stop-color="#1a40bb"/></linearGradient>
-          <filter id="glow2"><feGaussianBlur stdDeviation="3.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <filter id="g2"><feGaussianBlur stdDeviation="3.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
         </defs>
         <circle cx="100" cy="100" r="100" fill="url(#c2Bg)"/>
-        <circle cx="100" cy="100" r="95" fill="none" stroke="#3366ff" stroke-width="2.5" opacity="0.75" filter="url(#glow2)"/>
+        <circle cx="100" cy="100" r="95" fill="none" stroke="#3366ff" stroke-width="2.5" opacity="0.75" filter="url(#g2)"/>
         <circle cx="100" cy="100" r="92" fill="none" stroke="url(#c2Or)" stroke-width="1.2" stroke-dasharray="290 300" stroke-dashoffset="-145" opacity="0.6"/>
         <circle cx="100" cy="100" r="88" fill="none" stroke="#1e3a88" stroke-width="0.8"/>
         <g stroke="#4466bb" stroke-width="1.3" opacity="0.55">
           <line x1="100" y1="9" x2="100" y2="18"/><line x1="100" y1="182" x2="100" y2="191"/>
           <line x1="9" y1="100" x2="18" y2="100"/><line x1="182" y1="100" x2="191" y2="100"/>
         </g>
-        <polygon points="100,13 92,100 108,100" fill="url(#c2Or)" filter="url(#glow2)" opacity="0.96"/>
+        <polygon points="100,13 92,100 108,100" fill="url(#c2Or)" filter="url(#g2)" opacity="0.96"/>
         <polygon points="100,187 92,100 108,100" fill="url(#c2Bl)" opacity="0.82"/>
         <polygon points="187,100 100,92 100,108" fill="#1c3890" opacity="0.78"/>
         <polygon points="13,100 100,92 100,108" fill="#1c3890" opacity="0.78"/>
@@ -498,7 +595,6 @@ html, body { width:100%; height:100%; overflow:hidden; font-family:'Inter',sans-
     </div>
   </div>
 
-  <!-- Title -->
   <div class="dash-title">DASHBOARD PETA INTERAKTIF</div>
 
   <!-- Stats -->
@@ -529,11 +625,10 @@ html, body { width:100%; height:100%; overflow:hidden; font-family:'Inter',sans-
   <div class="action-row">
     <div class="panduan-wrapper">
       <button class="action-btn" id="btn-panduan" onclick="togglePanduan(event)">
-        PANDUAN
-        <span class="chev" id="chev-panduan">▾</span>
+        PANDUAN <span class="chev" id="chev-panduan">▾</span>
       </button>
       <div class="panduan-dd" id="dd-panduan">
-        <a href="https://drive.google.com/file/d/1MxVYnUHEMcRFiyZvM5hed6YWbQk3MOb9/view?usp=sharing" target="_blank" class="panduan-item">
+        <a href="LINK_PANDUAN_WEB_DISINI" target="_blank" class="panduan-item">
           <span class="picon">📖</span> Panduan Penggunaan Web
         </a>
         <a href="LINK_SOP_DISINI" target="_blank" class="panduan-item">
@@ -541,7 +636,7 @@ html, body { width:100%; height:100%; overflow:hidden; font-family:'Inter',sans-
         </a>
       </div>
     </div>
-    <button class="action-btn" onclick="window.open('https://docs.google.com/spreadsheets/d/10icuJ2MPnmnqdA4GV47qqOWSX7wLcUmQDwRhFaCPmoM/edit?usp=drive_link','_blank')">
+    <button class="action-btn" onclick="window.open('LINK_SPREADSHEET_DISINI','_blank')">
       DATABASE
     </button>
   </div>
@@ -555,13 +650,13 @@ html, body { width:100%; height:100%; overflow:hidden; font-family:'Inter',sans-
         BIDANG PEMERINTAHAN <span class="chev" id="chev-pem">▾</span>
       </button>
       <div class="bidang-dd dd-pem" id="dd-pem">
-        <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Jumlah Desa</div><div class="peta-desc">Data jumlah desa per kecamatan</div></div><div class="peta-action map-btn" onclick="openPeta('https://gadispasial.github.io/P_DS_OKUT_2026-001/')">🗺️</div></div>
-        <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Batas Administrasi</div><div class="peta-desc">Data batas wilayah administrasi tingkat kecamatan</div></div><div class="peta-action map-btn" onclick="openPeta('https://gadispasial.github.io/P_ADM_OKUT_2026-002/')">🗺️</div></div>
-        <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Profil Penduduk</div><div class="peta-desc">Data jumlah penduduk, kepadatan per km², rasio jenis kelamin</div></div><div class="peta-action map-btn" onclick="openPeta('https://gadispasial.github.io/P_PP_OKUT_2026-003/')">🗺️</div></div>
-        <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Titik Ibukota</div><div class="peta-desc">Data ibukota kecamatan, kelurahan, dan desa</div></div><div class="peta-action map-btn" onclick="openPeta('https://gadispasial.github.io/P_TI_OKUT_2026-004/')">🗺️</div></div>
-        <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Sebaran Fasilitas Pemerintahan</div><div class="peta-desc">Data kantor OPD, kecamatan, dan kelurahan/desa</div></div><div class="peta-action map-btn" onclick="openPeta('https://gadispasial.github.io/P_FPM_OKUT_2026-005/')">🗺️</div></div>
-        <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Sebaran Fasilitas Keamanan</div><div class="peta-desc">Data kantor polisi dan pos keamanan</div></div><div class="peta-action map-btn" onclick="openPeta('https://gadispasial.github.io/P_FK_OKUT_2026-006/')">🗺️</div></div>
-        <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Sebaran Fasilitas Pos</div><div class="peta-desc">Data lokasi fasilitas pos dan layanan pengiriman</div></div><div class="peta-action map-btn" onclick="openPeta('https://gadispasial.github.io/P_FPS_OKUT_2026-007/')">🗺️</div></div>
+        <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Jumlah Desa</div><div class="peta-desc">Data jumlah desa per kecamatan</div></div><div class="peta-action map-btn" onclick="openPeta('LINK_PETA_JUMLAH_DESA')">🗺️</div></div>
+        <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Batas Administrasi</div><div class="peta-desc">Data batas wilayah administrasi tingkat kecamatan</div></div><div class="peta-action map-btn" onclick="openPeta('LINK_PETA_BATAS_ADMIN')">🗺️</div></div>
+        <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Profil Penduduk</div><div class="peta-desc">Data jumlah penduduk, kepadatan per km², rasio jenis kelamin</div></div><div class="peta-action map-btn" onclick="openPeta('LINK_PETA_PROFIL_PENDUDUK')">🗺️</div></div>
+        <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Titik Ibukota</div><div class="peta-desc">Data ibukota kecamatan, kelurahan, dan desa</div></div><div class="peta-action map-btn" onclick="openPeta('LINK_PETA_IBUKOTA')">🗺️</div></div>
+        <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Sebaran Fasilitas Pemerintahan</div><div class="peta-desc">Data kantor OPD, kecamatan, dan kelurahan/desa</div></div><div class="peta-action map-btn" onclick="openPeta('LINK_PETA_FAS_PEM')">🗺️</div></div>
+        <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Sebaran Fasilitas Keamanan</div><div class="peta-desc">Data kantor polisi dan pos keamanan</div></div><div class="peta-action map-btn" onclick="openPeta('LINK_PETA_KEAMANAN')">🗺️</div></div>
+        <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Sebaran Fasilitas Pos</div><div class="peta-desc">Data lokasi fasilitas pos dan layanan pengiriman</div></div><div class="peta-action map-btn" onclick="openPeta('LINK_PETA_FAS_POS')">🗺️</div></div>
       </div>
     </div>
 
@@ -571,20 +666,20 @@ html, body { width:100%; height:100%; overflow:hidden; font-family:'Inter',sans-
         BIDANG SOSIAL BUDAYA <span class="chev" id="chev-sos">▾</span>
       </button>
       <div class="bidang-dd dd-sos" id="dd-sos">
-        <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Profil Pendidikan</div><div class="peta-desc">Data jumlah guru, murid, dan sekolah pada seluruh jenjang</div></div><div class="peta-action map-btn" onclick="openPeta('https://gadispasial.github.io/SB_PP_OKUT_2026-001/')">🗺️</div></div>
+        <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Profil Pendidikan</div><div class="peta-desc">Data jumlah guru, murid, dan sekolah pada seluruh jenjang</div></div><div class="peta-action map-btn" onclick="openPeta('LINK_PETA_PROFIL_PEND')">🗺️</div></div>
         <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Lokasi Usulan Sekolah Rakyat</div><div class="peta-desc">Data titik lokasi yang diusulkan sebagai Sekolah Rakyat</div></div><div class="peta-action lock-btn" onclick="showNotice()">🔒</div></div>
-        <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Kemiskinan</div><div class="peta-desc">Data sebaran dan tingkat kemiskinan per kecamatan</div></div><div class="peta-action map-btn" onclick="openPeta('https://gadispasial.github.io/SB_KM_OKUT_2026-003/')">🗺️</div></div>
-        <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Sebaran Fasilitas SD/MI</div><div class="peta-desc">Data titik lokasi fasilitas SD dan Madrasah Ibtidaiyah</div></div><div class="peta-action map-btn" onclick="openPeta('https://gadispasial.github.io/SB_SDMI_OKUT_2026-004/')">🗺️</div></div>
-        <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Sebaran Fasilitas Sanggar</div><div class="peta-desc">Data titik lokasi sanggar belajar dan sanggar seni budaya</div></div><div class="peta-action map-btn" onclick="openPeta('https://gadispasial.github.io/SB_SG_OKUT_2026-005/')">🗺️</div></div>
-        <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Sebaran Fasilitas SMP/MTs</div><div class="peta-desc">Data titik lokasi fasilitas SMP dan Madrasah Tsanawiyah</div></div><div class="peta-action map-btn" onclick="openPeta('https://gadispasial.github.io/SB_SMPMTS_OKUT_2026-006/')">🗺️</div></div>
-        <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Sebaran Fasilitas SMA/SMK</div><div class="peta-desc">Data titik lokasi fasilitas SMA dan SMK</div></div><div class="peta-action map-btn" onclick="openPeta('https://gadispasial.github.io/SB_SMAK_OKUT_2026-007/')">🗺️</div></div>
-        <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Sebaran Fasilitas TK/KB/RA</div><div class="peta-desc">Data titik lokasi fasilitas pendidikan anak usia dini</div></div><div class="peta-action map-btn" onclick="openPeta('https://gadispasial.github.io/SB_TKBRA_OKUT_2026-008/')">🗺️</div></div>
-        <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Sebaran Fasilitas Perguruan Tinggi</div><div class="peta-desc">Data titik lokasi fasilitas pendidikan tinggi</div></div><div class="peta-action map-btn" onclick="openPeta('https://gadispasial.github.io/SB_PT_OKUT_2026-009/')">🗺️</div></div>
-        <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Sebaran Fasilitas Peribadatan</div><div class="peta-desc">Data titik lokasi fasilitas peribadatan dan keagamaan</div></div><div class="peta-action map-btn" onclick="openPeta('https://gadispasial.github.io/SB_PB_OKUT_2026-010/')">🗺️</div></div>
-        <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Sebaran Tempat Wisata</div><div class="peta-desc">Data destinasi wisata alam, budaya, buatan, dan religi</div></div><div class="peta-action map-btn" onclick="openPeta('https://gadispasial.github.io/SB_WS_OKUT_2026-011/')">🗺️</div></div>
-        <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Sebaran Cagar Budaya</div><div class="peta-desc">Data titik lokasi cagar budaya</div></div><div class="peta-action map-btn" onclick="openPeta('https://gadispasial.github.io/SB_CG_OKUT_2026-012/')">🗺️</div></div>
-        <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Sebaran Monumen</div><div class="peta-desc">Data titik lokasi monumen bersejarah dan peringatan</div></div><div class="peta-action map-btn" onclick="openPeta('https://gadispasial.github.io/SB_MO_OKUT_2026-013/')">🗺️</div></div>
-        <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Sebaran Fasilitas Stadion</div><div class="peta-desc">Data titik lokasi fasilitas olahraga</div></div><div class="peta-action map-btn" onclick="openPeta('https://gadispasial.github.io/SB_ST_OKUT_2026-014/')">🗺️</div></div>
+        <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Kemiskinan</div><div class="peta-desc">Data sebaran dan tingkat kemiskinan per kecamatan</div></div><div class="peta-action map-btn" onclick="openPeta('LINK_PETA_KEMISKINAN')">🗺️</div></div>
+        <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Sebaran Fasilitas SD/MI</div><div class="peta-desc">Data titik lokasi fasilitas SD dan Madrasah Ibtidaiyah</div></div><div class="peta-action map-btn" onclick="openPeta('LINK_PETA_SDMI')">🗺️</div></div>
+        <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Sebaran Fasilitas Sanggar</div><div class="peta-desc">Data titik lokasi sanggar belajar dan sanggar seni budaya</div></div><div class="peta-action map-btn" onclick="openPeta('LINK_PETA_SANGGAR')">🗺️</div></div>
+        <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Sebaran Fasilitas SMP/MTs</div><div class="peta-desc">Data titik lokasi fasilitas SMP dan Madrasah Tsanawiyah</div></div><div class="peta-action map-btn" onclick="openPeta('LINK_PETA_SMPMTS')">🗺️</div></div>
+        <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Sebaran Fasilitas SMA/SMK</div><div class="peta-desc">Data titik lokasi fasilitas SMA dan SMK</div></div><div class="peta-action map-btn" onclick="openPeta('LINK_PETA_SMASMK')">🗺️</div></div>
+        <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Sebaran Fasilitas TK/KB/RA</div><div class="peta-desc">Data titik lokasi fasilitas pendidikan anak usia dini</div></div><div class="peta-action map-btn" onclick="openPeta('LINK_PETA_TKKBRA')">🗺️</div></div>
+        <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Sebaran Fasilitas Perguruan Tinggi</div><div class="peta-desc">Data titik lokasi fasilitas pendidikan tinggi</div></div><div class="peta-action map-btn" onclick="openPeta('LINK_PETA_PT')">🗺️</div></div>
+        <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Sebaran Fasilitas Peribadatan</div><div class="peta-desc">Data titik lokasi fasilitas peribadatan dan keagamaan</div></div><div class="peta-action map-btn" onclick="openPeta('LINK_PETA_PERIBADATAN')">🗺️</div></div>
+        <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Sebaran Tempat Wisata</div><div class="peta-desc">Data destinasi wisata alam, budaya, buatan, dan religi</div></div><div class="peta-action map-btn" onclick="openPeta('LINK_PETA_WISATA')">🗺️</div></div>
+        <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Sebaran Cagar Budaya</div><div class="peta-desc">Data titik lokasi cagar budaya</div></div><div class="peta-action map-btn" onclick="openPeta('LINK_PETA_CAGAR')">🗺️</div></div>
+        <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Sebaran Monumen</div><div class="peta-desc">Data titik lokasi monumen bersejarah dan peringatan</div></div><div class="peta-action map-btn" onclick="openPeta('LINK_PETA_MONUMEN')">🗺️</div></div>
+        <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Sebaran Fasilitas Stadion</div><div class="peta-desc">Data titik lokasi fasilitas olahraga</div></div><div class="peta-action map-btn" onclick="openPeta('LINK_PETA_STADION')">🗺️</div></div>
       </div>
     </div>
 
@@ -603,7 +698,6 @@ html, body { width:100%; height:100%; overflow:hidden; font-family:'Inter',sans-
 
   </div><!-- /bidang-row -->
 
-  <!-- Footer -->
   <div class="dash-footer">
     <div class="dash-footer-text">
       <div class="main">BAPPERIDA</div>
@@ -645,33 +739,32 @@ function togglePanduan(e) {
   const dd = document.getElementById('dd-panduan');
   const chev = document.getElementById('chev-panduan');
   const btn = document.getElementById('btn-panduan');
-  const wasOpen = dd.classList.contains('show');
+  const was = dd.classList.contains('show');
   closeAll();
-  if (!wasOpen) { dd.classList.add('show'); chev.textContent='▴'; btn.classList.add('open'); }
+  if (!was) { dd.classList.add('show'); chev.textContent='▴'; btn.classList.add('open'); }
 }
 
 /* BIDANG */
 const BIDANGS = ['pem','sos','man'];
 function toggleBidang(id, e) {
   e.stopPropagation();
-  const dd = document.getElementById('dd-'+id);
-  const btn = document.getElementById('btn-'+id);
+  const dd   = document.getElementById('dd-'+id);
   const chev = document.getElementById('chev-'+id);
-  const wasOpen = dd.classList.contains('show');
+  const btn  = document.getElementById('btn-'+id);
+  const was  = dd.classList.contains('show');
   closeAll();
-  if (!wasOpen) {
-    // Calculate position from button
-    const rect = btn.getBoundingClientRect();
-    const ddWidth = 340;
-    // Center under button, but keep inside viewport
-    let left = rect.left + rect.width/2 - ddWidth/2;
+  if (!was) {
+    /* Calculate fixed position from button */
+    const rect   = btn.getBoundingClientRect();
+    const ddW    = Math.min(340, window.innerWidth - 20);
+    let left     = rect.left + rect.width/2 - ddW/2;
     if (left < 10) left = 10;
-    if (left + ddWidth > window.innerWidth - 10) left = window.innerWidth - ddWidth - 10;
-    // Max height so it doesn't go below viewport bottom (leave 20px margin)
-    const spaceBelow = window.innerHeight - rect.bottom - 20;
-    const maxH = Math.min(Math.max(spaceBelow, 200), window.innerHeight * 0.55);
-    dd.style.top = (rect.bottom + 10) + 'px';
-    dd.style.left = left + 'px';
+    if (left + ddW > window.innerWidth - 10) left = window.innerWidth - ddW - 10;
+    const space  = window.innerHeight - rect.bottom - 16;
+    const maxH   = Math.min(Math.max(space, 180), window.innerHeight * 0.55);
+    dd.style.top     = (rect.bottom + 8) + 'px';
+    dd.style.left    = left + 'px';
+    dd.style.width   = ddW + 'px';
     dd.style.maxHeight = maxH + 'px';
     dd.classList.add('show');
     chev.textContent = '▴';
@@ -680,28 +773,33 @@ function toggleBidang(id, e) {
 }
 
 function closeAll() {
-  ['panduan',...BIDANGS].forEach(id => {
-    const dd = document.getElementById('dd-'+id);
+  ['panduan', ...BIDANGS].forEach(id => {
+    const dd   = document.getElementById('dd-'+id);
     const chev = document.getElementById('chev-'+id);
-    const btn = document.getElementById('btn-'+id);
-    if (dd) dd.classList.remove('show');
-    if (chev) chev.textContent='▾';
-    if (btn) btn.classList.remove('open');
+    const btn  = document.getElementById('btn-'+id);
+    if (dd)   dd.classList.remove('show');
+    if (chev) chev.textContent = '▾';
+    if (btn)  btn.classList.remove('open');
   });
 }
-
 document.addEventListener('click', closeAll);
 
 /* PETA */
 function openPeta(link) {
-  if (!link.startsWith('LINK_')) window.open(link,'_blank');
+  if (!link.startsWith('LINK_')) window.open(link, '_blank');
   else alert('Link repository peta belum dikonfigurasi.');
 }
 
 /* NOTICE */
-function showNotice() { document.getElementById('notice-overlay').classList.add('show'); }
+function showNotice()  { document.getElementById('notice-overlay').classList.add('show'); }
 function closeNotice() { document.getElementById('notice-overlay').classList.remove('show'); }
-document.getElementById('notice-overlay').addEventListener('click', function(e){ if(e.target===this) closeNotice(); });
+document.getElementById('notice-overlay').addEventListener('click', function(e) {
+  if (e.target === this) closeNotice();
+});
+
+/* Recalculate open dropdown on resize / orientation change */
+window.addEventListener('resize', closeAll);
+window.addEventListener('orientationchange', closeAll);
 
 /* Update jumlah peta: document.getElementById('jumlah-peta').textContent = '30'; */
 </script>
