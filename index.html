@@ -218,17 +218,17 @@ html, body {
 .panduan-item:hover { background:#ddeeff; }
 .picon { font-size:20px; }
 
-/* Bidang row */
-.bidang-row {
+/* subbidang row */
+.subbidang-row {
   display:flex; justify-content:center; gap:14px;
   padding:0 24px 12px; z-index:20; position:relative;
   overflow:visible; flex-wrap:wrap;
 }
-.bidang-wrapper {
+.subbidang-wrapper {
   position:relative; flex:1; min-width:180px; max-width:290px;
   display:flex; flex-direction:column; align-items:center; overflow:visible;
 }
-.bidang-btn {
+.subbidang-btn {
   width:100%; background:rgba(255,255,255,.88); border:none; border-radius:50px;
   padding:14px 18px; font-family:'Exo 2',sans-serif;
   font-size:clamp(12px,1.3vw,14.5px); font-weight:700; cursor:pointer;
@@ -237,14 +237,14 @@ html, body {
   text-align:center; line-height:1.3; letter-spacing:1px;
   text-transform:uppercase; backdrop-filter:blur(6px);
 }
-.bidang-btn:hover { transform:translateY(-2px); box-shadow:0 10px 26px rgba(0,0,60,.2); }
-.bidang-btn:active { transform:translateY(0); }
-.bidang-btn.pemerintahan { color:#1a8aff; }
-.bidang-btn.sosial { color:#c07800; }
-.bidang-btn.manusia { color:#d8005e; }
+.subbidang-btn:hover { transform:translateY(-2px); box-shadow:0 10px 26px rgba(0,0,60,.2); }
+.subbidang-btn:active { transform:translateY(0); }
+.subbidang-btn.pemerintahan { color:#1a8aff; }
+.subbidang-btn.sosial { color:#c07800; }
+.subbidang-btn.manusia { color:#d8005e; }
 
-/* Bidang dropdown — fixed position, smooth scroll */
-.bidang-dd {
+/* subbidang dropdown — fixed position, smooth scroll */
+.subbidang-dd {
   display:none; position:fixed;
   width:clamp(280px,90vw,340px); background:#fff; border-radius:18px;
   box-shadow:0 16px 50px rgba(0,0,80,.25);
@@ -254,9 +254,9 @@ html, body {
   scroll-behavior:smooth;
   scrollbar-width:thin; scrollbar-color:#bbb transparent;
 }
-.bidang-dd.show { display:flex; }
-.bidang-dd::-webkit-scrollbar { width:5px; }
-.bidang-dd::-webkit-scrollbar-thumb { background:#bbb; border-radius:10px; }
+.subbidang-dd.show { display:flex; }
+.subbidang-dd::-webkit-scrollbar { width:5px; }
+.subbidang-dd::-webkit-scrollbar-thumb { background:#bbb; border-radius:10px; }
 
 /* Peta items */
 .peta-item {
@@ -367,13 +367,13 @@ html, body {
 
   .panduan-dd { width:calc(100vw - 24px); left:0; }
 
-  .bidang-row { gap:8px; padding:0 12px 10px; }
-  .bidang-wrapper { min-width:calc(50% - 8px); max-width:calc(50% - 4px); }
+  .subbidang-row { gap:8px; padding:0 12px 10px; }
+  .subbidang-wrapper { min-width:calc(50% - 8px); max-width:calc(50% - 4px); }
   /* Pembangunan Manusia takes full width on mobile */
-  .bidang-wrapper:last-child { min-width:100%; max-width:100%; }
-  .bidang-btn { padding:12px 12px; font-size:11px; border-radius:14px; }
+  .subbidang-wrapper:last-child { min-width:100%; max-width:100%; }
+  .subbidang-btn { padding:12px 12px; font-size:11px; border-radius:14px; }
 
-  .bidang-dd { width:calc(100vw - 20px); max-height:50vh; }
+  .subbidang-dd { width:calc(100vw - 20px); max-height:50vh; }
 
   .peta-name { font-size:12px; }
   .peta-desc { font-size:10px; }
@@ -398,8 +398,8 @@ html, body {
   .dash-title { font-size:clamp(20px,3.5vw,34px); }
   .stats-row { gap:12px; }
   .stat-card { padding:14px 14px; }
-  .bidang-row { gap:10px; }
-  .bidang-wrapper { min-width:160px; }
+  .subbidang-row { gap:10px; }
+  .subbidang-wrapper { min-width:160px; }
 }
 </style>
 </head>
@@ -511,7 +511,7 @@ html, body {
 
       <!-- ★ DESKRIPSI SINGKAT — ubah teks di sini sesuai kebutuhan ★ -->
       <div class="p1-desc">
-        Platform Geodatabase and Data Information System menyediakan peta interaktif, data spasial, dan informasi wilayah yang terintegrasi untuk mendukung perencanaan pembangunan daerah pada Bidang Pemerintahan dan Pembangunan Manusia.
+        Platform Geodatabase and Data Information System menyediakan peta interaktif, data spasial, dan informasi wilayah yang terintegrasi untuk mendukung perencanaan pembangunan daerah pada subbidang Pemerintahan dan Pembangunan Manusia.
       </div>
 
       <button class="p1-btn" onclick="goToDashboard()">
@@ -600,7 +600,7 @@ html, body {
     <div class="stat-card">
       <div class="stat-icon">🔺</div>
       <div class="stat-number">3</div>
-      <div class="stat-label">Bidang Utama</div>
+      <div class="stat-label">subbidang Utama</div>
     </div>
     <div class="stat-card">
       <div class="stat-icon">🗺️</div>
@@ -639,15 +639,15 @@ html, body {
     </button>
   </div>
 
-  <!-- Bidang row -->
-  <div class="bidang-row">
+  <!-- subbidang row -->
+  <div class="subbidang-row">
 
     <!-- Pemerintahan -->
-    <div class="bidang-wrapper">
-      <button class="bidang-btn pemerintahan" id="btn-pem" onclick="toggleBidang('pem',event)">
-        BIDANG PEMERINTAHAN <span class="chev" id="chev-pem">▾</span>
+    <div class="subbidang-wrapper">
+      <button class="subbidang-btn pemerintahan" id="btn-pem" onclick="togglesubbidang('pem',event)">
+        subbidang PEMERINTAHAN <span class="chev" id="chev-pem">▾</span>
       </button>
-      <div class="bidang-dd dd-pem" id="dd-pem">
+      <div class="subbidang-dd dd-pem" id="dd-pem">
         <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Jumlah Desa</div><div class="peta-desc">Data jumlah desa per kecamatan</div></div><div class="peta-action map-btn" onclick="openPeta('https://gadispasial.github.io/P_DS_OKUT_2026-001/')">🗺️</div></div>
         <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Batas Administrasi</div><div class="peta-desc">Data batas wilayah administrasi tingkat kecamatan</div></div><div class="peta-action map-btn" onclick="openPeta('https://gadispasial.github.io/P_ADM_OKUT_2026-002/')">🗺️</div></div>
         <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Profil Penduduk</div><div class="peta-desc">Data jumlah penduduk, kepadatan per km², rasio jenis kelamin</div></div><div class="peta-action map-btn" onclick="openPeta('https://gadispasial.github.io/P_PP_OKUT_2026-003/')">🗺️</div></div>
@@ -659,11 +659,11 @@ html, body {
     </div>
 
     <!-- Sosial Budaya -->
-    <div class="bidang-wrapper">
-      <button class="bidang-btn sosial" id="btn-sos" onclick="toggleBidang('sos',event)">
-        BIDANG SOSIAL BUDAYA <span class="chev" id="chev-sos">▾</span>
+    <div class="subbidang-wrapper">
+      <button class="subbidang-btn sosial" id="btn-sos" onclick="togglesubbidang('sos',event)">
+        subbidang SOSIAL BUDAYA <span class="chev" id="chev-sos">▾</span>
       </button>
-      <div class="bidang-dd dd-sos" id="dd-sos">
+      <div class="subbidang-dd dd-sos" id="dd-sos">
         <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Profil Pendidikan</div><div class="peta-desc">Data jumlah guru, murid, dan sekolah pada seluruh jenjang</div></div><div class="peta-action map-btn" onclick="openPeta('https://gadispasial.github.io/SB_PP_OKUT_2026-001')">🗺️</div></div>
         <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Lokasi Usulan Sekolah Rakyat</div><div class="peta-desc">Data titik lokasi yang diusulkan sebagai Sekolah Rakyat</div></div><div class="peta-action lock-btn" onclick="showNotice()">🔒</div></div>
         <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Kemiskinan</div><div class="peta-desc">Data sebaran dan tingkat kemiskinan per kecamatan</div></div><div class="peta-action map-btn" onclick="openPeta('https://gadispasial.github.io/SB_KM_OKUT_2026-003')">🗺️</div></div>
@@ -682,11 +682,11 @@ html, body {
     </div>
 
     <!-- Pembangunan Manusia -->
-    <div class="bidang-wrapper">
-      <button class="bidang-btn manusia" id="btn-man" onclick="toggleBidang('man',event)">
-        BIDANG PEMBANGUNAN MANUSIA <span class="chev" id="chev-man">▾</span>
+    <div class="subbidang-wrapper">
+      <button class="subbidang-btn manusia" id="btn-man" onclick="togglesubbidang('man',event)">
+        subbidang PEMBANGUNAN MANUSIA <span class="chev" id="chev-man">▾</span>
       </button>
-      <div class="bidang-dd dd-man" id="dd-man">
+      <div class="subbidang-dd dd-man" id="dd-man">
         <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Sebaran Fasilitas Kesehatan</div><div class="peta-desc">Data puskesmas, rumah sakit, dan posyandu di seluruh kecamatan</div></div><div class="peta-action map-btn" onclick="openPeta('https://gadispasial.github.io/PM_KS_OKUT_2026-001')">🗺️</div></div>
         <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Sebaran Ketersediaan Air Bersih</div><div class="peta-desc">Data kondisi ketersediaan air bersih</div></div><div class="peta-action map-btn" onclick="openPeta('https://699d2a3c064fecb5d549798f--aesthetic-centaur-c55d68.netlify.app/')">🗺️</div></div>
         <div class="peta-item"><div class="peta-info"><div class="peta-name">Peta Sebaran Stunting</div><div class="peta-desc">Data sebaran prevalensi stunting pada balita</div></div><div class="peta-action soon-btn">SOON</div></div>
@@ -694,7 +694,7 @@ html, body {
       </div>
     </div>
 
-  </div><!-- /bidang-row -->
+  </div><!-- /subbidang-row -->
 
   <div class="dash-footer">
     <div class="dash-footer-text">
@@ -710,7 +710,7 @@ html, body {
   <div class="notice-box">
     <div class="notice-icon">🔒</div>
     <div class="notice-title">Dataset Tertutup</div>
-    <div class="notice-msg">Dataset bersifat tertutup untuk publik — hubungi bidang untuk detail database</div>
+    <div class="notice-msg">Dataset bersifat tertutup untuk publik — hubungi subbidang untuk detail database</div>
     <button class="notice-close" onclick="closeNotice()">Tutup</button>
   </div>
 </div>
@@ -742,9 +742,9 @@ function togglePanduan(e) {
   if (!was) { dd.classList.add('show'); chev.textContent='▴'; btn.classList.add('open'); }
 }
 
-/* BIDANG */
-const BIDANGS = ['pem','sos','man'];
-function toggleBidang(id, e) {
+/* subbidang */
+const subbidangS = ['pem','sos','man'];
+function togglesubbidang(id, e) {
   e.stopPropagation();
   const dd   = document.getElementById('dd-'+id);
   const chev = document.getElementById('chev-'+id);
@@ -771,7 +771,7 @@ function toggleBidang(id, e) {
 }
 
 function closeAll() {
-  ['panduan', ...BIDANGS].forEach(id => {
+  ['panduan', ...subbidangS].forEach(id => {
     const dd   = document.getElementById('dd-'+id);
     const chev = document.getElementById('chev-'+id);
     const btn  = document.getElementById('btn-'+id);
